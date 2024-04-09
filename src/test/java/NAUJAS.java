@@ -24,16 +24,17 @@ public class NAUJAS {
     public void Search() {
 
         int count = 0;
-//        String fistId= "0";// kintamasis palyginimui kai firstID yra lygus ID
+
+        String url= "https://www.skelbiu.lt/skelbimai/?autocompleted=[" + 1 + "]&keywords=kepure+su+snapeliu&cities=0&distance=0&mainCity=0&search=1&category_id=4353&user_type=0&ad_since_min=0&ad_since_max=0&visited_page=&detailsSearch=0";
+
+        _globalDriver.get(url);
 
         for (int a = 1; a <= 5; a++) {
 
-            _globalDriver.get("https://www.skelbiu.lt/skelbimai/?autocompleted=[" + a + "]&keywords=kepure+su+snapeliu&cities=0&distance=0&mainCity=0&search=1&category_id=4353&user_type=0&ad_since_min=0&ad_since_max=0&visited_page=&detailsSearch=0");
+            System.out.println( "loaded: " + _globalDriver.getCurrentUrl());
 
             if (a == 1) {
-
                 _globalDriver.findElement(By.id("onetrust-reject-all-handler")).click();//cookies
-
             }
 
             for (int i = 1; i <= 29; i++) {
@@ -41,19 +42,28 @@ public class NAUJAS {
                 try {
                     _globalDriver.findElement(By.xpath("/html/body/div[3]/div[2]/div[2]/div[4]/div[1]/div[2]/div[2]/div[" + i + "]/a")).click(); // pirmo Xpatch
                     count++;
+
                 } catch (Exception e) {
                     continue;
                 }
 
                 String ID = _globalDriver.findElement(By.xpath("/html/body/div[2]/div/div[2]/div[2]/div[1]/div[6]/div[1]/div[1]/div[4]/div[1]")).getText(); // pirmo pr ID xpath
-                System.out.println(ID);
+                System.out.println(ID + " " + i );
                 _globalDriver.get("https://www.skelbiu.lt/skelbimai/?autocompleted=[" + a + "]&keywords=kepure+su+snapeliu&cities=0&distance=0&mainCity=0&search=1&category_id=4353&user_type=0&ad_since_min=0&ad_since_max=0&visited_page=&detailsSearch=0");
 
             }
+
+            try {
+            _globalDriver.findElement(By.xpath("//*[text()='»']")).click();// next zenkliukas
+
+            } catch (Exception e) {
+                break;
+            }
         }
+
         System.out.println("skelbimu skaicius yra" + count);
     }
-    // parasyti kintamaji  kad first ID sutaptu su ID kai prasuka cikla
+
 
 
 
