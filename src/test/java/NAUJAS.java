@@ -73,10 +73,10 @@ public class NAUJAS {
     // a musu puslapiu skicius
     // i preke
 
-    int count = 0;
+        int count = 0;
 //        String fistId= "0";// kintamasis palyginimui kai firstID yra lygus ID
 
-    for (int b = 1; b <= 5; b++) {
+        for (int b = 1; b <= 5; b++) {
 
 
         _globalDriver.get("https://www.skelbiu.lt/skelbimai/?autocompleted=["+ b + "]&keywords=samotines+plytos&cost_min=&cost_max=&type=0&cities=0&distance=0&mainCity=0&search=1&category_id=2&user_type=0&ad_since_min=0&ad_since_max=0&visited_page=1&orderBy=-1&detailsSearch=0;");
@@ -100,8 +100,14 @@ public class NAUJAS {
             System.out.println(ID);
             _globalDriver.get("https://www.skelbiu.lt/skelbimai/?autocompleted=["+ b + "]&keywords=samotines+plytos&cost_min=&cost_max=&type=0&cities=0&distance=0&mainCity=0&search=1&category_id=2&user_type=0&ad_since_min=0&ad_since_max=0&visited_page=1&orderBy=-1&detailsSearch=0");
 
+            }
         }
-    }
     System.out.println("skelbimu skaicius yra" + count);
-}
+    }
+
+
+
+
+
+
 }
