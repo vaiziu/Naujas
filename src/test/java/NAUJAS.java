@@ -56,15 +56,15 @@ public class NAUJAS {
         System.out.println("skelbimu skaicius yra" + count);
     }
     // parasyti kintamaji  kad first ID sutaptu su ID kai prasuka cikla
-}
+
 
 //if (IdFirst== a==1 && i==1){
 //    break;
 //        }
 
 
-@Test
-public void Search() {
+    @Test
+    public void Search2() {
     // a musu puslapiu skicius
     // i preke
 
@@ -73,7 +73,7 @@ public void Search() {
 
     for (int b = 1; b <= 5; b++) {
 
-        WebDriver _globalDriver;
+
         _globalDriver.get("https://www.skelbiu.lt/skelbimai/?autocompleted=["+ b + "]&keywords=samotines+plytos&cost_min=&cost_max=&type=0&cities=0&distance=0&mainCity=0&search=1&category_id=2&user_type=0&ad_since_min=0&ad_since_max=0&visited_page=1&orderBy=-1&detailsSearch=0;");
 
         if (b == 1) {
@@ -93,9 +93,10 @@ public void Search() {
 
             String ID = _globalDriver.findElement(By.xpath("/html/body/div[2]/div/div[2]/div[2]/div[1]/div[6]/div[1]/div[1]/div[4]/div[1]")).getText(); // pirmo pr ID xpath
             System.out.println(ID);
-            _globalDriver.get("https://www.skelbiu.lt/skelbimai/?autocompleted=[" + b + "]&keywords=kepure+su+snapeliu&cities=0&distance=0&mainCity=0&search=1&category_id=4353&user_type=0&ad_since_min=0&ad_since_max=0&visited_page=&detailsSearch=0");
+            _globalDriver.get("https://www.skelbiu.lt/skelbimai/?autocompleted=["+ b + "]&keywords=samotines+plytos&cost_min=&cost_max=&type=0&cities=0&distance=0&mainCity=0&search=1&category_id=2&user_type=0&ad_since_min=0&ad_since_max=0&visited_page=1&orderBy=-1&detailsSearch=0");
 
         }
     }
     System.out.println("skelbimu skaicius yra" + count);
+}
 }
