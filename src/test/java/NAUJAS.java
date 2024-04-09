@@ -22,8 +22,6 @@ public class NAUJAS {
 
     @Test
     public void Search() {
-        // a musu puslapiu skicius
-        // i preke
 
         int count = 0;
 //        String fistId= "0";// kintamasis palyginimui kai firstID yra lygus ID
@@ -58,13 +56,10 @@ public class NAUJAS {
     // parasyti kintamaji  kad first ID sutaptu su ID kai prasuka cikla
 
 
-//if (IdFirst== a==1 && i==1){
-//    break;
-//        }
 
 
     @Test
-    public void Search2() {
+    public void SamotinesPlytos() {
     // a musu puslapiu skicius
     // i preke
 
