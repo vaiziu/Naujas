@@ -37,27 +37,26 @@ public class NAUJAS {
             for (int i = 1; i <= 29; i++) {
 
                 try {
-                    _globalDriver.findElement(By.className("standard-list-container"))
-                    _globalDriver.findElement(By.xpath("div[" + i + "]/a"))
-                    _globalDriver.click(); // pirmo Xpatch
+                    _globalDriver.findElement(By.className("standard-list-container"));
+                    _globalDriver.findElement(By.xpath("div[" + i + "]/a")).click();   // pirmo Xpatch
                     count++;
 
                 } catch (Exception e) {
-                    System.out.println("not an ad");
+                    System.out.println("advertise hat");
                     continue;
                 }
 
                 String ID = _globalDriver.findElement(By.xpath("/html/body/div[2]/div/div[2]/div[2]/div[1]/div[6]/div[1]/div[1]/div[4]/div[1]")).getText(); // pirmo pr ID xpath
-                System.out.println(ID + " " + i );
+                System.out.println(ID);
 
-                _globalDriver.navigate().back();
+//                _globalDriver.navigate().back();
             }
 
             try {
                 _globalDriver.findElement(By.xpath("//*[text()='»']")).click();// next zenkliukas
 
             } catch (Exception e) {
-                System.out.println("last page");
+//                System.out.println("last page");
                 break;
             }
         }
