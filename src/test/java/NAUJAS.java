@@ -4,6 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import org.testng.util.TimeUtils;
 
 import java.util.concurrent.TimeUnit;
 
@@ -24,14 +25,10 @@ public class NAUJAS {
     public void Search() {
 
         int count = 0;
+        _globalDriver.get("https://www.skelbiu.lt/skelbimai/1?autocompleted=%5B1%5D&keywords=kepure+su+snapeliu&cities=0&distance=0&mainCity=0&search=1&category_id=4353&user_type=0&ad_since_min=0&ad_since_max=0&visited_page=&detailsSearch=0");
 
-        String url= "https://www.skelbiu.lt/skelbimai/?autocompleted=[" + 1 + "]&keywords=kepure+su+snapeliu&cities=0&distance=0&mainCity=0&search=1&category_id=4353&user_type=0&ad_since_min=0&ad_since_max=0&visited_page=&detailsSearch=0";
-
-        _globalDriver.get(url);
-
-        for (int a = 1; a <= 5; a++) {
-
-            System.out.println( "loaded: " + _globalDriver.getCurrentUrl());
+        for (int a = 1; a <= 99; a++) {
+            System.out.println(a + " page: " + _globalDriver.getCurrentUrl());
 
             if (a == 1) {
                 _globalDriver.findElement(By.id("onetrust-reject-all-handler")).click();//cookies
@@ -40,28 +37,32 @@ public class NAUJAS {
             for (int i = 1; i <= 29; i++) {
 
                 try {
-                    _globalDriver.findElement(By.xpath("/html/body/div[3]/div[2]/div[2]/div[4]/div[1]/div[2]/div[2]/div[" + i + "]/a")).click(); // pirmo Xpatch
+                    _globalDriver.findElement(By.className("standard-list-container"))
+                    _globalDriver.findElement(By.xpath("div[" + i + "]/a"))
+                    _globalDriver.click(); // pirmo Xpatch
                     count++;
 
                 } catch (Exception e) {
+                    System.out.println("not an ad");
                     continue;
                 }
 
                 String ID = _globalDriver.findElement(By.xpath("/html/body/div[2]/div/div[2]/div[2]/div[1]/div[6]/div[1]/div[1]/div[4]/div[1]")).getText(); // pirmo pr ID xpath
                 System.out.println(ID + " " + i );
-                _globalDriver.get("https://www.skelbiu.lt/skelbimai/?autocompleted=[" + a + "]&keywords=kepure+su+snapeliu&cities=0&distance=0&mainCity=0&search=1&category_id=4353&user_type=0&ad_since_min=0&ad_since_max=0&visited_page=&detailsSearch=0");
 
+                _globalDriver.navigate().back();
             }
 
             try {
-            _globalDriver.findElement(By.xpath("//*[text()='»']")).click();// next zenkliukas
+                _globalDriver.findElement(By.xpath("//*[text()='»']")).click();// next zenkliukas
 
             } catch (Exception e) {
+                System.out.println("last page");
                 break;
             }
         }
 
-        System.out.println("skelbimu skaicius yra" + count);
+        System.out.println("skelbimu skaicius yra: " + count);
     }
 
 
